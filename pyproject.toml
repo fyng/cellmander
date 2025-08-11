@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cellmander"
+version = "0.1.0"
+description = "TBD"
+requires-python = ">=3.12"
+authors = [
+  { name="Feiyang H."}
+]
+
+dependencies = [
+  "pandas>=1.5",
+  "geopandas>=0.12",
+  "shapely>=2.0",
+  "pyproj",
+  "requests>=2.28",
+  "tqdm>=4.60",
+  "jupyterlab",
+  "matplotlib",
+  "seaborn",
+  "numpy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["cellmander*"]
+
+[tool.setuptools]
+include-package-data = true
+
+# (Optional) small convenience script if you want a CLI entrypoint later.
+# Uncomment and implement cellmander.__main__:main if you want `cellmander` CLI.
+# [project.scripts]
+# cellmander = "cellmander.__main__:main"
