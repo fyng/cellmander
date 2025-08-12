@@ -21,6 +21,7 @@ def alarm_csv_url_for(state_abbr: str):
             return url
     raise FileNotFoundError(f"ALARM CSV not found for {state_abbr} (tried vtd/block).")
 
+
 def download_alarm_csv(state_abbr: str, dest_dir="data"):
     """Download ALARM CSV for one state; return path to local CSV file."""
     os.makedirs(dest_dir, exist_ok=True)
@@ -35,9 +36,11 @@ def download_alarm_csv(state_abbr: str, dest_dir="data"):
             f.write(chunk)
     return local_path
 
+
 def read_alarm_csv(csv_path_or_buffer):
     """Load a CSV into pandas DataFrame (ALARM CSV)."""
     return pd.read_csv(csv_path_or_buffer, dtype=str, low_memory=False)
+
 
 def detect_and_extract_2020_vote_cols(df: pd.DataFrame):
     """
@@ -62,6 +65,7 @@ def detect_and_extract_2020_vote_cols(df: pd.DataFrame):
         return 'ndv', 'nrv'
     # nothing found
     raise KeyError("Couldn't find 2020 Dem/Rep vote columns. Inspect columns: " + ", ".join(df.columns[:50]))
+
 
 def extract_vote_totals(df: pd.DataFrame):
     """
